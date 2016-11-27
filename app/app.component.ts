@@ -1,7 +1,15 @@
 import { Component } from '@angular/core';
 
+import { NavbarComponent } from './navbar.component';
+
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `
+    <navbar></navbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  `,
 })
 export class AppComponent  { name = 'Angular'; }
