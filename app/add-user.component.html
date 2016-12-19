@@ -1,0 +1,84 @@
+<div>
+    <h1>{{ title }}</h1>
+    <form class="form-background container pull-left"
+          [formGroup]="addUserForm"
+          (ngSubmit)="addUser()">
+        <fieldset>
+            <legend class="p-t-10">User</legend>
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" 
+                       name="name"
+                       class="width-100 form-input"
+                       formControlName="name">
+                <div *ngIf="addUserForm.controls.name.touched && addUserForm.controls.name.errors">
+                    <div class="alert alert-danger" 
+                        *ngIf="addUserForm.controls.name.errors.required">
+                        First Name is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" 
+                       name="email"
+                       class="width-100 form-input"
+                       formControlName="email">
+                <div *ngIf="addUserForm.controls.email.touched && addUserForm.controls.email.errors">
+                    <div class="alert alert-danger" 
+                        *ngIf="addUserForm.controls.email.errors.required">
+                        Email is required.
+                    </div>
+                    <div class="alert alert-danger" 
+                        *ngIf="addUserForm.controls.email.errors.pattern">
+                        Please enter a valid email.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" 
+                       name="phone"
+                       class="width-100 form-input"
+                       formControlName="phone">
+            </div>
+        </fieldset>
+
+        <fieldset [formGroup]="addUserForm.controls.address">
+            <legend >Address</legend>
+            <div class="form-group">
+                <label for="street" class="form-label">Street</label>
+                <input type="text" 
+                       name="street"
+                       class="width-100 form-input"
+                       formControlName="street">
+            </div>
+            <div class="form-group">
+                <label for="suite" class="form-label">Suite</label>
+                <input type="text" 
+                       name="suite"
+                       class="width-100 form-input"
+                       formControlName="suite">
+            </div>
+            <div class="form-group">
+                <label for="city" class="form-label">City</label>
+                <input type="text" 
+                       name="city"
+                       class="width-100 form-input"
+                       formControlName="city">
+            </div>
+            <div class="form-group">
+                <label for="zipcode" class="form-label">Zip Code</label>
+                <input type="text" 
+                       name="zipcode"
+                       class="width-100 form-input"
+                       formControlName="zipcode">
+            </div>
+        </fieldset>
+        <button class="btn btn-primary"
+                type="submit"
+                [disabled]="!addUserForm.valid">
+                Save
+        </button>
+    </form>
+</div>

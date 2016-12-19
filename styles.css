@@ -3,3 +3,27 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+
+.form-label{
+  display: block;
+  font-weight: 800;
+}
+
+.form-background{
+  background-color: #d9edf7;
+  width: 50%;
+  padding-bottom: 20px;
+}
+.width-100{
+  width: 100%;
+}
+.form-input{
+  height: 35px;
+}
+.p-t-10{
+  padding-top: 10px;
+}
+
+.ng-touched.ng-invalid	{
+  border:	1px	solid	red;
+}	

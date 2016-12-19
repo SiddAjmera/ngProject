@@ -12,4 +12,4 @@ import { NavbarComponent } from './navbar.component';
     </div>
   `,
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent  { }

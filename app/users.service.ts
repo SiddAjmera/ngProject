@@ -16,4 +16,9 @@ export class UsersService{
         return this._http.get(this._url)
                    .map((response: Response) => response.json() as User[]);
     }
+
+    addUser(user: User): Observable<User>{
+        return this._http.post(this._url, user)
+                   .map((response: Response) => response.json() as User);
+    }
 }
