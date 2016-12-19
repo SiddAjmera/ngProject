@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
-import { AddUserComponent, ConfirmDeactivateGuardComponent } from './add-user.component';
+import { UserFormComponent, ConfirmDeactivateGuardComponent } from './user-form.component';
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './navbar.component';
 import { PostsComponent } from './posts.component';
@@ -22,7 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   declarations: [ 
     AppComponent, 
-    AddUserComponent,
+    UserFormComponent,
     HomeComponent, 
     NavbarComponent, 
     PostsComponent, 

@@ -8,13 +8,13 @@ import { UsersService } from './users.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'add-user',
-    templateUrl: './add-user.component.html'
+    selector: 'user-form',
+    templateUrl: './user-form.component.html'
 })
 
-export class AddUserComponent implements OnInit{
+export class UserFormComponent implements OnInit{
     title: string = 'Add a User';
-    addUserForm: FormGroup;
+    userForm: FormGroup;
 
     constructor(
         private _fb: FormBuilder, 
@@ -23,15 +23,15 @@ export class AddUserComponent implements OnInit{
     ){ }
 
     addUser(): void{
-        this._usersService.addUser(this.addUserForm.value)
+        this._usersService.addUser(this.userForm.value)
             .subscribe((user: User) => {
-                this.addUserForm.markAsPristine();
+                this.userForm.markAsPristine();
                 if(user) this._location.back();
             });
     }
 
     ngOnInit(): void{
-        this.addUserForm = this._fb.group({
+        this.userForm = this._fb.group({
             name: ['', Validators.required],
             email: ['', Validators.compose([
                 Validators.required,
@@ -48,13 +48,13 @@ export class AddUserComponent implements OnInit{
     }
 
     hasChanges(): boolean{
-        return this.addUserForm.dirty;
+        return this.userForm.dirty;
     }
 }
 
 @Injectable()
-export class ConfirmDeactivateGuardComponent implements CanDeactivate<AddUserComponent>{
-    canDeactivate(target: AddUserComponent) {
+export class ConfirmDeactivateGuardComponent implements CanDeactivate<UserFormComponent>{
+    canDeactivate(target: UserFormComponent) {
         if(target.hasChanges()){
             return window.confirm('You have unsaved changes. Are you sure you want to continue?');
         }
