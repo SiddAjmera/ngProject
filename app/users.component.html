@@ -15,7 +15,7 @@
     <tr *ngFor="let user of users">
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
-        <td><i class="glyphicon glyphicon-edit green"></i></td>
-        <td><i class="glyphicon glyphicon-remove"></i></td>
+        <td><i class="glyphicon glyphicon-edit green" [routerLink]="[user.id]"></i></td>
+        <td><i class="glyphicon glyphicon-remove pointer" (click)="deleteConfirmation(user.id)"></i></td>
     </tr>
 </table>

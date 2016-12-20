@@ -17,8 +17,23 @@ export class UsersService{
                    .map((response: Response) => response.json() as User[]);
     }
 
+    getUser(id: string): Observable<User>{
+        return this._http.get(`${this._url}/${id}`)
+                   .map((response: Response) => response.json() as User);
+    }
+
     addUser(user: User): Observable<User>{
         return this._http.post(this._url, user)
+                   .map((response: Response) => response.json() as User);
+    }
+
+    updateUser(id: string, user: User): Observable<User>{
+        return this._http.put(`${this._url}/${id}`, user)
+                   .map((response: Response) => response.json() as User);
+    }
+
+    deleteUser(id: string): Observable<User>{
+        return this._http.delete(`${this._url}/${id}`)
                    .map((response: Response) => response.json() as User);
     }
 }

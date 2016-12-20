@@ -1,7 +1,6 @@
-import { CanDeactivate } from '@angular/router';
+import { ActivatedRoute, CanDeactivate, Router } from '@angular/router';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 
 import { User } from './user';
 import { UsersService } from './users.service';
@@ -13,20 +12,34 @@ import { UsersService } from './users.service';
 })
 
 export class UserFormComponent implements OnInit{
-    title: string = 'Add a User';
+    title: string;
     userForm: FormGroup;
+    id: string;
 
     constructor(
         private _fb: FormBuilder, 
-        private _usersService: UsersService, 
-        private _location: Location
+        private _usersService: UsersService,
+        private _activatedRoute: ActivatedRoute,
+        private _router: Router
     ){ }
 
-    addUser(): void{
+    saveUser(): void{
+        (this.title === 'Add User') ? this.addUser() : this.updateUser();
+    }
+
+    addUser(){
         this._usersService.addUser(this.userForm.value)
             .subscribe((user: User) => {
                 this.userForm.markAsPristine();
-                if(user) this._location.back();
+                this._router.navigate(['/users']);
+            });
+    }
+
+    updateUser(){
+        this._usersService.updateUser(this.id, this.userForm.value)
+            .subscribe((user: User) => {
+                this.userForm.markAsPristine();
+                this._router.navigate(['/users']);
             });
     }
 
@@ -44,6 +57,21 @@ export class UserFormComponent implements OnInit{
                 city: '',
                 zipcode: ''
             })
+        });
+
+        this._activatedRoute.params.subscribe(params => {
+            this.id = params['id'];
+            if(this.id != "add"){
+                this.title = 'Edit User';
+                this._usersService.getUser(this.id)
+                    .subscribe(
+                        (user: User) => this.userForm.patchValue(user),
+                        (error) => this._router.navigate(['/not-found'])
+                    );
+            }else{
+                this.title = 'Add User';
+                this.userForm.patchValue({});
+            }
         });
     }
 

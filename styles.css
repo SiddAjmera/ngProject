@@ -26,4 +26,8 @@ h1 {
 }
 .green{
   color: rgb(24, 188, 156);
+  cursor: pointer;
+}
+.pointer{
+  cursor: pointer;
 }

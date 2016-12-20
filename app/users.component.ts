@@ -20,4 +20,18 @@ export class UsersComponent implements OnInit{
         this._usersService.getUsers()
             .subscribe((users: User[]) => this.users = users);
     }
+
+    deleteConfirmation(userId: string): void{
+        var userResponse = confirm('Are you sure you want to delete this user?');
+        if(userResponse) this.deleteUser(userId);
+    }
+
+    deleteUser(userId: string): void{
+        this._usersService.deleteUser(userId)
+            .subscribe((user: User) => {
+                this.users = this.users.filter(function( user ) {
+                    return user['id'] !== userId;
+                });
+            });
+    }
 }

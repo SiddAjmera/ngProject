@@ -7,6 +7,7 @@ import { AppComponent }  from './app.component';
 import { UserFormComponent, ConfirmDeactivateGuardComponent } from './user-form.component';
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './navbar.component';
+import { NotFoundComponent } from './not-found.component';
 import { PostsComponent } from './posts.component';
 import { UsersComponent } from './users.component';
 import { UsersService } from './users.service';
@@ -25,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     UserFormComponent,
     HomeComponent, 
     NavbarComponent, 
+    NotFoundComponent,
     PostsComponent, 
     UsersComponent 
   ],
