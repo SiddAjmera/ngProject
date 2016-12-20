@@ -1,5 +1,5 @@
 {
-  "name": "angular-quickstart",
+  "name": "ng-project",
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
@@ -14,7 +14,7 @@
     "tsc:w": "tsc -w"
   },
   "keywords": [],
-  "author": "",
+  "author": "Siddharth Ajmera",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~2.2.0",
