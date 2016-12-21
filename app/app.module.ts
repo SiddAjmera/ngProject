@@ -9,6 +9,8 @@ import { HomeComponent } from './home.component';
 import { NavbarComponent } from './navbar.component';
 import { NotFoundComponent } from './not-found.component';
 import { PostsComponent } from './posts.component';
+import { PostsService } from './posts.service';
+import { SpinnerComponent } from './spinner.component';
 import { UsersComponent } from './users.component';
 import { UsersService } from './users.service';
 
@@ -28,12 +30,14 @@ import { AppRoutingModule } from './app-routing.module';
     NavbarComponent, 
     NotFoundComponent,
     PostsComponent, 
+    SpinnerComponent,
     UsersComponent 
   ],
   bootstrap: [ AppComponent ],
   providers: [ 
-    UsersService, 
-    ConfirmDeactivateGuardComponent 
+    ConfirmDeactivateGuardComponent,
+    PostsService,
+    UsersService 
   ]
 })
 export class AppModule { }
