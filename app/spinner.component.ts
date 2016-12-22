@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
         <i class="fa fa-spinner fa-spin fa-3x"
            *ngIf="isVisible">
         </i>
+        <br />
     `
 })
 

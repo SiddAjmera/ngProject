@@ -14,6 +14,11 @@
     <br />
 </div>
 
+<pagination [items]="posts"
+            [page-size]="10"
+            (page-changed)="onPageChanged($event)">
+</pagination>
+
 <div class="row">
     <div class="col-md-6">
         <spinner [isVisible]="arePostsLoading"></spinner>

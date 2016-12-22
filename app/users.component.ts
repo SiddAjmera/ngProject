@@ -13,12 +13,17 @@ export class UsersComponent implements OnInit{
 
     title: string = "Users";
     users: User[];
+    areUsersLoading: boolean = true;
 
     constructor(private _usersService: UsersService) {}
 
     ngOnInit(): void{
         this._usersService.getUsers()
-            .subscribe((users: User[]) => this.users = users);
+            .subscribe(
+                (users: User[]) => this.users = users,
+                null,
+                () => this.areUsersLoading = false
+            );
     }
 
     deleteConfirmation(userId: string): void{

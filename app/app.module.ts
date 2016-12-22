@@ -8,6 +8,7 @@ import { UserFormComponent, ConfirmDeactivateGuardComponent } from './user-form.
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from './navbar.component';
 import { NotFoundComponent } from './not-found.component';
+import { PaginationComponent } from './pagination.component';
 import { PostsComponent } from './posts.component';
 import { PostsService } from './posts.service';
 import { SpinnerComponent } from './spinner.component';
@@ -24,13 +25,14 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule
   ],
   declarations: [ 
-    AppComponent, 
-    UserFormComponent,
+    AppComponent,
     HomeComponent, 
     NavbarComponent, 
     NotFoundComponent,
+    PaginationComponent,
     PostsComponent, 
     SpinnerComponent,
+    UserFormComponent,
     UsersComponent 
   ],
   bootstrap: [ AppComponent ],

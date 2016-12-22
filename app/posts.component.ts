@@ -17,8 +17,8 @@ import 'rxjs/add/observable/forkJoin';
 
 export class PostsComponent implements OnInit{
     title: string = "Posts";
-    posts: Post[];
-    users: User[];
+    posts: Post[] = [];
+    users: User[] = [];
     arePostsLoading: boolean = true;
     areCommentsLoading: boolean = true;
     selectedPost: Post;
@@ -34,6 +34,7 @@ export class PostsComponent implements OnInit{
     }
 
     private getPosts(filter?: Object){
+        this.arePostsLoading = true;
         this._postsService.getPosts(filter)
             .subscribe(
                 (posts: Post[]) => this.posts = posts,
@@ -48,6 +49,7 @@ export class PostsComponent implements OnInit{
     }
 
     postSelected(post: Post){
+        this.areCommentsLoading = true;
         this.selectedPost = post;
         this._postsService.getComments(post.id)
             .subscribe(
@@ -58,8 +60,11 @@ export class PostsComponent implements OnInit{
     }
 
     fetchPostsByUser(filter?: Object){
-        this.arePostsLoading = true;
         this.selectedPost = null;
         this.getPosts(filter);
+    }
+
+    onPageChanged(event: Event){
+        console.log('onPageChanged got called', event);
     }
 }

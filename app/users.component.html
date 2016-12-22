@@ -3,7 +3,12 @@
 <a class="btn btn-primary" 
    routerLink="/users/add">Add User</a>
 
-<table class="table table-bordered">
+<br />
+
+<spinner [isVisible]="areUsersLoading"></spinner>
+
+<table class="table table-bordered"
+       *ngIf="!areUsersLoading">
     <thead>
         <tr>
             <th>Name</th>
